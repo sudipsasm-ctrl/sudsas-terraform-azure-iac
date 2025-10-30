@@ -351,11 +351,11 @@ terraform plan -detailed-exitcode
 
 This infrastructure demonstrates **enterprise-grade Azure deployment practices** combining:
 
-- **5 years of Terraform expertise**: Advanced module patterns, state management, and CI/CD integration
-- **9 years of Azure experience**: Deep platform knowledge, security best practices, and operational excellence
-- **DevOps Engineering**: Infrastructure as Code, monitoring, and automated patch management
-- **Security Focus**: Defense in depth, compliance frameworks, and threat mitigation
-- **Operational Excellence**: Monitoring, alerting, cost optimization, and disaster recovery
+- ** Terraform expertise**: Advanced module patterns, state management, and CI/CD integration
+- ** Azure experience**: Deep platform knowledge, security best practices, and operational excellence
+- ** DevOps Engineering**: Infrastructure as Code, monitoring, and automated patch management
+- ** Security Focus**: Defense in depth, compliance frameworks, and threat mitigation
+- ** Operational Excellence**: Monitoring, alerting, cost optimization, and disaster recovery
 
 The solution showcases real-world scenarios including multi-tier architectures, automated patch management, comprehensive monitoring, and enterprise security controls that I've implemented across various production environments.
 
