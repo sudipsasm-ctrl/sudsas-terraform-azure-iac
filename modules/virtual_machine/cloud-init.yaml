@@ -1,0 +1,207 @@
+#cloud-config
+# Cloud-init configuration for Azure Linux VM
+# Installs and configures web server with security hardening
+
+package_update: true
+package_upgrade: true
+
+packages:
+%{ if web_server_type == "nginx" ~}
+  - nginx
+  - ufw
+  - fail2ban
+%{ endif ~}
+%{ if web_server_type == "apache" ~}
+  - apache2
+  - ufw
+  - fail2ban
+%{ endif ~}
+  - htop
+  - curl
+  - wget
+  - unzip
+  - git
+  - net-tools
+
+# Create a simple index.html
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Azure VM - ${web_server_type}</title>
+          <style>
+              body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+              .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+              .header { color: #0078d4; border-bottom: 3px solid #0078d4; padding-bottom: 20px; margin-bottom: 30px; }
+              .info-box { background: #f8f9fa; padding: 20px; border-left: 4px solid #28a745; margin: 20px 0; }
+              .status { color: #28a745; font-weight: bold; }
+          </style>
+      </head>
+      <body>
+          <div class="container">
+              <div class="header">
+                  <h1>🚀 Azure Virtual Machine</h1>
+                  <h2>Web Server: ${web_server_type}</h2>
+              </div>
+              <div class="info-box">
+                  <h3>✅ Server Status: <span class="status">Online</span></h3>
+                  <p><strong>Hostname:</strong> <span id="hostname">Loading...</span></p>
+                  <p><strong>Server Time:</strong> <span id="datetime">Loading...</span></p>
+                  <p><strong>Web Server:</strong> ${web_server_type}</p>
+              </div>
+              <h3>🔧 Installed Components</h3>
+              <ul>
+                  <li>${web_server_type} Web Server</li>
+                  <li>UFW Firewall</li>
+                  <li>Fail2Ban Security</li>
+                  <li>System Monitoring Tools</li>
+              </ul>
+              <h3>📊 System Information</h3>
+              <p>This VM was provisioned using Terraform and configured with cloud-init.</p>
+              <p>Deployed on Azure with enterprise-grade security and monitoring.</p>
+          </div>
+          <script>
+              document.getElementById('hostname').textContent = window.location.hostname;
+              document.getElementById('datetime').textContent = new Date().toString();
+          </script>
+      </body>
+      </html>
+    permissions: '0644'
+    owner: root:root
+
+%{ if web_server_type == "nginx" ~}
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+          listen 80 default_server;
+          listen [::]:80 default_server;
+          
+          root /var/www/html;
+          index index.html index.htm index.nginx-debian.html;
+          
+          server_name _;
+          
+          # Security headers
+          add_header X-Frame-Options "SAMEORIGIN" always;
+          add_header X-Content-Type-Options "nosniff" always;
+          add_header X-XSS-Protection "1; mode=block" always;
+          add_header Referrer-Policy "no-referrer-when-downgrade" always;
+          
+          location / {
+              try_files $uri $uri/ =404;
+          }
+          
+          # Hide nginx version
+          server_tokens off;
+          
+          # Security: Deny access to hidden files
+          location ~ /\. {
+              deny all;
+              access_log off;
+              log_not_found off;
+          }
+      }
+    permissions: '0644'
+    owner: root:root
+%{ endif ~}
+
+%{ if web_server_type == "apache" ~}
+  - path: /etc/apache2/sites-available/000-default.conf
+    content: |
+      <VirtualHost *:80>
+          ServerAdmin webmaster@localhost
+          DocumentRoot /var/www/html
+          
+          # Security headers
+          Header always set X-Content-Type-Options nosniff
+          Header always set X-Frame-Options DENY
+          Header always set X-XSS-Protection "1; mode=block"
+          
+          ErrorLog ${APACHE_LOG_DIR}/error.log
+          CustomLog ${APACHE_LOG_DIR}/access.log combined
+          
+          # Security: Disable server signature
+          ServerTokens Prod
+          ServerSignature Off
+          
+          # Security: Deny access to hidden files
+          <FilesMatch "^\.">
+              Order allow,deny
+              Deny from all
+          </FilesMatch>
+      </VirtualHost>
+    permissions: '0644'
+    owner: root:root
+%{ endif ~}
+
+  - path: /etc/fail2ban/jail.local
+    content: |
+      [DEFAULT]
+      bantime = 3600
+      findtime = 600
+      maxretry = 5
+      
+      [sshd]
+      enabled = true
+      port = ssh
+      logpath = /var/log/auth.log
+      maxretry = 3
+    permissions: '0644'
+    owner: root:root
+
+runcmd:
+  # Configure UFW firewall
+  - ufw --force enable
+  - ufw default deny incoming
+  - ufw default allow outgoing
+  - ufw allow ssh
+  - ufw allow 80/tcp
+  - ufw allow 443/tcp
+  
+%{ if web_server_type == "nginx" ~}
+  # Configure and start nginx
+  - systemctl enable nginx
+  - systemctl start nginx
+  - nginx -t
+%{ endif ~}
+
+%{ if web_server_type == "apache" ~}
+  # Configure and start apache
+  - a2enmod headers
+  - a2enmod rewrite
+  - systemctl enable apache2
+  - systemctl start apache2
+  - apache2ctl configtest
+%{ endif ~}
+  
+  # Configure and start fail2ban
+  - systemctl enable fail2ban
+  - systemctl start fail2ban
+  
+  # Update system packages
+  - apt-get update
+  - apt-get upgrade -y
+  
+  # Set up automatic security updates
+  - apt-get install -y unattended-upgrades
+  - dpkg-reconfigure -plow unattended-upgrades
+  
+  # Custom script execution
+%{ if custom_script != "" ~}
+  ${custom_script}
+%{ endif ~}
+
+# Configure automatic updates
+apt:
+  sources:
+    - source: "deb http://security.ubuntu.com/ubuntu focal-security main restricted"
+
+# System timezone
+timezone: UTC
+
+# Reboot if required
+power_state:
+  mode: reboot
+  condition: true

@@ -1,0 +1,52 @@
+# Assignment 1: Virtual Machines & Networking
+# Sample terraform.tfvars for customizing deployment
+
+# Basic Configuration
+resource_group_name = "rg-assignment1-webserver-prod"
+location           = "East US 2"
+environment        = "prod"
+project_name       = "webserver"
+
+# Tagging
+owner       = "John.Doe@company.com"
+cost_center = "IT-Infrastructure"
+
+# Network Configuration
+vnet_address_space      = "10.100.0.0/16"
+web_subnet_cidr        = "10.100.10.0/24"
+management_subnet_cidr = "10.100.100.0/24"
+
+# Replace with your actual management IP for secure SSH access
+management_source_ip = "203.0.113.0/24"  # Replace with your public IP or management network
+
+# Virtual Machine Configuration
+vm_size          = "Standard_D2s_v3"  # 2 vCPUs, 8 GB RAM - good for production web server
+admin_username   = "webadmin"
+generate_ssh_key = true  # Set to false if you want to provide your own SSH key
+
+# If generate_ssh_key = false, uncomment and provide your SSH public key:
+# admin_ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC... your-email@domain.com"
+
+# Storage Configuration
+os_disk_type    = "Premium_LRS"  # Premium SSD for better performance
+os_disk_size_gb = 64             # 64 GB OS disk
+
+# Optional: Add data disk for application data
+create_data_disk   = true
+data_disk_size_gb = 256
+data_disk_type    = "Premium_LRS"
+
+# Web Server Configuration
+web_server_type = "nginx"  # or "apache"
+
+# Monitoring and Security
+enable_monitoring        = true
+enable_ddos_protection  = false  # Enable for production if budget allows
+enable_network_watcher  = false
+
+# High Availability (optional)
+# availability_zone = "1"  # Specify AZ for better availability
+
+# Backup Configuration (optional)
+# enable_backup        = true
+# backup_policy_name   = "DefaultPolicy"
