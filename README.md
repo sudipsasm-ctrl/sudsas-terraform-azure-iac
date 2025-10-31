@@ -349,7 +349,7 @@ terraform plan -detailed-exitcode
 This infrastructure shows **production Azure deployment practices** combining:
 
 - **5 years of Terraform expertise**: Module patterns, state management, and CI/CD integration
-- **9 years of Azure experience**: Platform knowledge, security practices, and operational experience
+- **6 years of Azure experience**: Platform knowledge, security practices, and operational experience
 - **DevOps Engineering**: Infrastructure as Code, monitoring, and patch management
 - **Security Focus**: Defense in depth, compliance frameworks, and threat mitigation
 - **Operational Excellence**: Monitoring, alerting, cost optimization, and disaster recovery
