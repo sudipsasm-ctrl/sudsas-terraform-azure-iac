@@ -1,5 +1,5 @@
 # Complete Azure Infrastructure Environment
-# Combining VM deployment with comprehensive patch management
+# Combining VM deployment with patch management
 # Author: Senior Azure/Terraform Engineer with 5 years Terraform & 9 years Azure experience
 
 terraform {
@@ -42,7 +42,7 @@ resource "azurerm_resource_group" "main" {
   tags = local.common_tags
 }
 
-# Local values for comprehensive configuration
+# Local values for configuration
 locals {
   common_tags = {
     Environment   = var.environment
@@ -195,7 +195,7 @@ module "log_analytics" {
   retention_in_days  = var.log_retention_days
   daily_quota_gb     = var.daily_quota_gb
 
-  # Comprehensive solutions
+  # Solutions
   solutions = {
     "Updates" = {
       publisher = "Microsoft"
@@ -265,7 +265,7 @@ module "automation_account" {
   resource_group_name     = azurerm_resource_group.main.name
   location                = azurerm_resource_group.main.location
 
-  # Comprehensive patch management
+  # Patch management
   create_patch_runbooks           = true
   create_patch_schedule          = true
   patch_schedule_start_time      = local.patch_schedule_start_time

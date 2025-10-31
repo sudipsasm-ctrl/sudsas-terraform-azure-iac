@@ -1,5 +1,5 @@
 # Outputs for Virtual Network and Subnet Module
-# Provides comprehensive output information for dependent modules
+# Output information for dependent modules
 
 output "vnet_id" {
   description = "The ID of the virtual network"
@@ -62,7 +62,7 @@ output "subnet_cidr_blocks" {
   }
 }
 
-# Output for network peering or other advanced networking scenarios
+# Output for network peering or other networking scenarios
 output "vnet_guid" {
   description = "The GUID of the virtual network"
   value       = azurerm_virtual_network.vnet.guid

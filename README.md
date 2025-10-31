@@ -1,9 +1,6 @@
 # Azure & Terraform Infrastructure as Code - Modular Approach
 
-> **Senior Azure/Terraform Engineer Assignment Submission**  
-> *5 years Terraform experience • 9 years Azure experience*
-
-This repository contains a comprehensive Azure infrastructure deployment using modular Terraform configurations. Built with enterprise-grade practices, security hardening, and patch management capabilities.
+This repository contains an Azure infrastructure deployment using modular Terraform configurations. Built with production-ready practices, security hardening, and patch management capabilities.
 
 ## Architecture Overview
 
@@ -39,11 +36,11 @@ Internet → Web Server VM (Public IP) → App Server VM → Data Subnet
 
 ### Assignment 1: Virtual Machines & Networking
 
-**Objective**: Deploy a secure Linux web server using reusable Terraform modules.
+**Objective**: Set up a secure Linux web server using reusable Terraform modules.
 
 **Implementation**: [`assignment1-vm-networking/`](./assignment1-vm-networking/)
 
-**Features Delivered**:
+**Key Features**:
 - **Reusable Modules**: VNet/Subnet, NSG, Virtual Machine
 - **Secure VM**: Linux with NGINX/Apache via cloud-init
 - **Network Security**: Ports 22 and 80 exposed via NSG rules
@@ -89,8 +86,8 @@ terraform apply
 
 **Implementation**: [`assignment2-patch-management/`](./assignment2-patch-management/)
 
-**Features Delivered**:
-- **Automation Account Module**: Comprehensive patch management
+**Key Features**:
+- **Automation Account Module**: Full patch management
 - **Log Analytics Module**: Monitoring and compliance reporting
 - **Update Management Integration**: VM linking and configuration
 - **Weekly Patch Schedule**: Automated deployment scheduling
@@ -128,12 +125,12 @@ module "automation_account" {
 
 **Implementation**: [`complete-environment/`](./complete-environment/)
 
-**Enhanced Features**:
+**Key Features**:
 - **Multi-tier Architecture**: Web, App, and Data subnets
 - **Scalable VM Deployment**: Configurable VM count per tier
 - **Integrated Patch Management**: All VMs enrolled automatically
-- **Comprehensive Monitoring**: Full observability stack
-- **Advanced Security**: Tier-based NSG rules and network segmentation
+- **Complete Monitoring**: Full observability stack
+- **Enhanced Security**: Tier-based NSG rules and network segmentation
 - **Enterprise Tags**: Consistent tagging strategy
 
 ## Module Documentation
@@ -149,7 +146,7 @@ module "automation_account" {
 | **[log_analytics](./modules/log_analytics/)** | Monitoring & Logging | Solutions, alerts, saved searches |
 | **[update_management](./modules/update_management/)** | Patch Integration | VM linking, data collection, compliance |
 
-### Advanced Features
+### Key Features
 
 #### Security Hardening
 - **SSH Key Management**: Auto-generation with secure storage
@@ -231,7 +228,7 @@ echo "Visit Azure Portal > Automation Accounts > Update Management"
 ### Scaling and Performance
 
 ### Patch Management Dashboard
-Access comprehensive patch compliance through:
+Access patch compliance through:
 1. **Azure Portal** → Automation Accounts → Update Management
 2. **Log Analytics Workspace** → Saved Searches → Update queries
 3. **Azure Monitor** → Workbooks → Update Management
@@ -275,7 +272,7 @@ systemctl status azuremonitoragent
 ### Operational Security
 - **Managed Identities**: No stored credentials
 - **Role-Based Access**: Granular permission assignment
-- **Audit Logging**: Comprehensive activity tracking
+- **Audit Logging**: Activity tracking
 - **Backup Strategy**: Automated VM and data backups
 
 ### Cost Optimization
@@ -289,16 +286,16 @@ systemctl status azuremonitoragent
 
 ### Cost-Saving Features
 - **Resource Tagging**: Cost center tracking and allocation
-- ⏰ **Auto-Shutdown**: Development VM scheduling
+- **Auto-Shutdown**: Development VM scheduling
 - **Right-Sizing**: Performance-based recommendations
-- 💾 **Storage Optimization**: Appropriate disk types per workload
+- **Storage Optimization**: Appropriate disk types per workload
 
 ### Contributing
 
 ### Code Standards
 - **Terraform Style**: Follow [HashiCorp style guide](https://www.terraform.io/docs/language/syntax/style.html)
 - **Module Structure**: Consistent `main.tf`, `variables.tf`, `outputs.tf`
-- **Documentation**: Comprehensive README for each module
+- **Documentation**: README for each module
 - **Validation**: Input validation and error handling
 
 ### Testing Approach
@@ -334,7 +331,7 @@ terraform plan -detailed-exitcode
 
 | Requirement | Status | Implementation |
 |-------------|--------|----------------|
-| **Reusable Modules** | Complete | 6 enterprise-grade modules |
+| **Reusable Modules** | Complete | 6 production modules |
 | **VM Deployment** | Complete | Cloud-init with web server |
 | **Network Security** | Complete | NSGs with ports 22/80 exposed |
 | **Public IP Output** | Complete | Web server accessible via internet |
@@ -343,21 +340,21 @@ terraform plan -detailed-exitcode
 | **Weekly Scheduling** | Complete | Configurable maintenance windows |
 | **Monitoring Setup** | Complete | Log Analytics with solutions |
 | **Complete Environment** | Complete | Multi-tier parameterized deployment |
-| **Documentation** | Complete | Comprehensive guides and examples |
+| **Documentation** | Complete | Complete guides and examples |
 
 ---
 
 ## About the Implementation
 
-This infrastructure demonstrates **enterprise-grade Azure deployment practices** combining:
+This infrastructure shows **production Azure deployment practices** combining:
 
-- **5 years of Terraform expertise**: Advanced module patterns, state management, and CI/CD integration
-- **9 years of Azure experience**: Deep platform knowledge, security best practices, and operational excellence
+- **5 years of Terraform expertise**: Module patterns, state management, and CI/CD integration
+- **9 years of Azure experience**: Platform knowledge, security practices, and operational experience
 - **DevOps Engineering**: Infrastructure as Code, monitoring, and automated patch management
 - **Security Focus**: Defense in depth, compliance frameworks, and threat mitigation
 - **Operational Excellence**: Monitoring, alerting, cost optimization, and disaster recovery
 
-The solution showcases real-world scenarios including multi-tier architectures, automated patch management, comprehensive monitoring, and enterprise security controls that I've implemented across various production environments.
+The solution covers real-world scenarios including multi-tier architectures, patch management, monitoring, and security controls that I've implemented across various production environments.
 
 ---
 

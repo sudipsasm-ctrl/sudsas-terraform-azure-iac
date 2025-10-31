@@ -1,5 +1,5 @@
 # Outputs for Network Security Group Module
-# Provides comprehensive output information for dependent resources
+# Output information for dependent resources
 
 output "nsg_id" {
   description = "The ID of the network security group"

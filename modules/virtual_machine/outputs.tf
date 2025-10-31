@@ -1,5 +1,5 @@
 # Outputs for Virtual Machine Module
-# Provides comprehensive output information for dependent resources
+# Output information for dependent resources
 
 output "vm_id" {
   description = "The ID of the virtual machine"

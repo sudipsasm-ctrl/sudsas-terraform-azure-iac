@@ -1,5 +1,5 @@
 # Variables for Log Analytics Workspace Module
-# Comprehensive variable definitions for monitoring and logging configuration
+# Variable definitions for monitoring and logging configuration
 
 variable "workspace_name" {
   description = "Name of the Log Analytics workspace"
@@ -65,7 +65,7 @@ variable "reservation_capacity_in_gb_per_day" {
   }
 }
 
-# Advanced Configuration
+# Configuration
 variable "internet_ingestion_enabled" {
   description = "Whether internet ingestion is enabled"
   type        = bool

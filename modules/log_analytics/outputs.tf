@@ -1,5 +1,5 @@
 # Outputs for Log Analytics Workspace Module
-# Provides comprehensive output information for integration with monitoring and automation
+# Output information for integration with monitoring and automation
 
 output "workspace_id" {
   description = "The ID of the Log Analytics workspace"

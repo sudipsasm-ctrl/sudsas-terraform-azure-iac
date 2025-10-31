@@ -228,7 +228,7 @@ variable "enable_network_watcher" {
   default     = false
 }
 
-# Advanced Configuration
+# Configuration
 variable "custom_script_uri" {
   description = "URI of custom script to run after VM deployment"
   type        = string

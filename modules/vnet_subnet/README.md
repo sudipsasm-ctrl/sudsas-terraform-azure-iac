@@ -4,7 +4,7 @@ This module creates an Azure Virtual Network (VNet) with associated subnets, pro
 
 ## Features
 
-- **Flexible Subnet Configuration**: Create multiple subnets with custom address prefixes
+- **Subnet Configuration**: Create multiple subnets with custom address prefixes
 - **Service Endpoints**: Optional service endpoints for Azure services
 - **Route Tables**: Optional route table creation and association
 - **Subnet Delegation**: Support for subnet delegation to Azure services
@@ -43,7 +43,7 @@ module "network" {
 }
 ```
 
-## Advanced Usage with Delegation
+## Usage with Delegation
 
 ```hcl
 subnets = {

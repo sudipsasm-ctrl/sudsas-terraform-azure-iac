@@ -1,16 +1,16 @@
 # Virtual Machine Module
 
-This module creates an Azure Linux Virtual Machine with comprehensive configuration options, cloud-init support, and web server installation capabilities.
+This module creates an Azure Linux Virtual Machine with configuration options, cloud-init support, and web server installation capabilities.
 
 ## Features
 
 - **Automated Web Server Setup**: Installs and configures Nginx or Apache with cloud-init
 - **SSH Key Management**: Generate SSH keys automatically or use existing keys
 - **Security Hardening**: Includes UFW firewall, Fail2Ban, and security headers
-- **Flexible Networking**: Support for public/private IPs and custom network configurations
+- **Networking**: Support for public/private IPs and custom network configurations
 - **Managed Disks**: Configurable OS and data disks with various storage types
 - **Azure Integration**: Optional Azure Monitor Agent and managed identity support
-- **Cloud-Init**: Advanced cloud-init configuration with custom script support
+- **Cloud-Init**: Cloud-init configuration with custom script support
 - **Extension Support**: VM extensions for additional configuration options
 
 ## Usage
@@ -133,7 +133,7 @@ module "custom_vm" {
 
 ## Cloud-Init Features
 
-The module includes a comprehensive cloud-init configuration that:
+The module includes a cloud-init configuration that:
 
 - **Updates and upgrades** the system packages
 - **Installs security tools**: UFW firewall, Fail2Ban
@@ -214,7 +214,7 @@ The module includes a comprehensive cloud-init configuration that:
 1. **SSH Key Management**: Use strong SSH keys and consider key rotation
 2. **VM Sizing**: Choose appropriate VM sizes for workload requirements
 3. **Storage**: Use Premium SSD for production workloads
-4. **Monitoring**: Enable Azure Monitor Agent for comprehensive monitoring
+4. **Monitoring**: Enable Azure Monitor Agent for monitoring
 5. **Identity**: Use managed identities for Azure service integration
 6. **Updates**: Keep the cloud-init configuration updated with latest security patches
 7. **Backups**: Implement backup strategies for critical VMs

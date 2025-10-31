@@ -1,5 +1,5 @@
 # Variables for Network Security Group Module
-# Comprehensive variable definitions for NSG configuration
+# Variable definitions for NSG configuration
 
 variable "nsg_name" {
   description = "Name of the network security group"

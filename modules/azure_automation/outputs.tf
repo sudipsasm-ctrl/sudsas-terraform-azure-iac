@@ -1,5 +1,5 @@
 # Outputs for Azure Automation Account Module
-# Provides comprehensive output information for integration with other modules
+# Output information for integration with other modules
 
 output "automation_account_id" {
   description = "The ID of the Automation Account"

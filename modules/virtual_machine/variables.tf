@@ -1,5 +1,5 @@
 # Variables for Virtual Machine Module
-# Comprehensive variable definitions for VM configuration
+# Variable definitions for VM configuration
 
 variable "vm_name" {
   description = "Name of the virtual machine"

@@ -4,11 +4,11 @@ This module creates an Azure Network Security Group (NSG) with configurable secu
 
 ## Features
 
-- **Flexible Rule Configuration**: Create custom inbound and outbound security rules
+- **Rule Configuration**: Create custom inbound and outbound security rules
 - **Predefined Web Rules**: Option to create common web server rules (SSH, HTTP, HTTPS)
 - **Multiple Associations**: Support for subnet and network interface associations
 - **Rule Validation**: Input validation for priorities, protocols, and directions
-- **Comprehensive Outputs**: Detailed outputs for troubleshooting and integration
+- **Detailed Outputs**: Outputs for troubleshooting and integration
 - **Tagging Support**: Consistent tagging across resources
 
 ## Usage

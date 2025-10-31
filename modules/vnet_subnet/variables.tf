@@ -1,5 +1,5 @@
 # Variables for Virtual Network and Subnet Module
-# Comprehensive variable definitions with validation
+# Variable definitions with validation
 
 variable "vnet_name" {
   description = "Name of the virtual network"

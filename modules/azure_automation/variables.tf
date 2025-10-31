@@ -1,5 +1,5 @@
 # Variables for Azure Automation Account Module
-# Comprehensive variable definitions for automation configuration
+# Variable definitions for automation configuration
 
 variable "automation_account_name" {
   description = "Name of the Azure Automation Account"
@@ -181,7 +181,7 @@ variable "assign_vm_contributor_role" {
   default     = true
 }
 
-# Advanced Configuration
+# Configuration
 variable "local_authentication_enabled" {
   description = "Whether local authentication is enabled for the Automation Account"
   type        = bool
